@@ -17,16 +17,20 @@ public:
 	static void RemoveMiddle(LinkedListNode *node);
 	static void RemoveBack(LinkedListNode *node);
 
+	static int Find(const int inData);
+
 	static void PrintList();
 
 private:
 	
 	//singleton land
 	LinkListManager();
+	~LinkListManager();
 	static LinkListManager *privGetInstance();
 
 	//data
 	LinkedListNode *head;
+	bool isInitialized;
 };
 
 
