@@ -38,7 +38,7 @@ void LinkListManager::AddToMiddle(LinkedListNode * node, int data)
 
 	LinkListManager *linkMan = privGetInstance();
 
-	linkMan->privAddToMiddle(node, data);
+	//linkMan->privAddToMiddle(node, data);
 }
 
 void LinkListManager::AddToBack(LinkedListNode * node)

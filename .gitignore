@@ -41,3 +41,4 @@
 **/ipch
 **/.vs
 MultiThreadedLinkedList/MultiThreadedLinkedList.VC.VC.opendb
+*.TMP
