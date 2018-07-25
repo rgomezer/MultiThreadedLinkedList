@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# Visual Studio Generated files
+*.suo
+*.sdf
+*.suo
+*.db
+**/Debug
+**/Release
+**/ipch
+**/.vs
