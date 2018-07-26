@@ -9,6 +9,8 @@ using namespace std;
 
 int main()
 {
+	printf("Initializing List Nodes and data\n\n");
+
 	LinkedListNode* A = new LinkedListNode();
 	A->SetData(1);
 
@@ -32,6 +34,8 @@ int main()
 
 	LinkListManager::Create();
 
+	printf("Adding List Nodes to Doubly Linked List\n\n");
+
 	LinkListManager::AddToFront(A);
 	LinkListManager::AddToFront(B);
 	LinkListManager::AddToFront(C);
@@ -39,6 +43,8 @@ int main()
 	LinkListManager::AddToFront(E);
 	LinkListManager::AddToFront(F);
 	LinkListManager::AddToFront(G);
+
+	LinkListManager::PrintList();
 
 	delete A;
 	delete B;

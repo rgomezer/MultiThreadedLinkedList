@@ -3,11 +3,7 @@
 #include <iostream>
 #include <assert.h>
 
-LinkListManager::LinkListManager()
-	:head(0), isInitialized(false)
-{
-	
-}
+
 
 LinkListManager::~LinkListManager()
 {
@@ -23,6 +19,33 @@ void LinkListManager::Create()
 	linkMan->isInitialized = true;
 }
 
+void LinkListManager::PrintList()
+{
+	LinkListManager *linkMan = privGetInstance();
+
+	LinkedListNode *temp = linkMan->head;
+
+	while (temp != 0)
+	{
+		if (temp->getNext() == 0)
+		{
+			printf("Node data: %d\n\n", temp->getData());
+			break;
+		}
+		else
+		{
+			printf("Node data: %d\n", temp->getData());
+		}
+
+		temp = temp->getNext();
+	}
+}
+
+LinkListManager::LinkListManager()
+	:head(0), isInitialized(false)
+{
+
+}
 void LinkListManager::AddToFront(LinkedListNode * node)
 {
 	assert(node != 0);
