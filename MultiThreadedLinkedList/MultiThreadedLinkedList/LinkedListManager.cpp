@@ -3,7 +3,11 @@
 #include <iostream>
 #include <assert.h>
 
+LinkListManager::LinkListManager()
+	:head(0), isInitialized(false)
+{
 
+}
 
 LinkListManager::~LinkListManager()
 {
@@ -16,7 +20,28 @@ void LinkListManager::Create()
 
 	assert(linkMan->isInitialized == false);
 
+	printf("Initialize Linked List Manager \n\n");
+
 	linkMan->isInitialized = true;
+}
+
+LinkedListNode * LinkListManager::Find(const int inData)
+{
+	LinkListManager *linkMan = privGetInstance();
+
+	LinkedListNode *temp = linkMan->head;
+
+	while (temp != 0)
+	{
+		if (temp->getData() == inData)
+		{
+			break;
+		}
+
+		temp = temp->getNext();
+	}
+
+	return temp;
 }
 
 void LinkListManager::PrintList()
@@ -41,11 +66,6 @@ void LinkListManager::PrintList()
 	}
 }
 
-LinkListManager::LinkListManager()
-	:head(0), isInitialized(false)
-{
-
-}
 void LinkListManager::AddToFront(LinkedListNode * node)
 {
 	assert(node != 0);
@@ -61,7 +81,7 @@ void LinkListManager::AddToMiddle(LinkedListNode * node, int data)
 
 	LinkListManager *linkMan = privGetInstance();
 
-	//linkMan->privAddToMiddle(node, data);
+	linkMan->privAddToMiddle(node, data);
 }
 
 void LinkListManager::AddToBack(LinkedListNode * node)
@@ -130,4 +150,37 @@ void LinkListManager::privAddToBack(LinkedListNode * node)
 	temp->SetNext(node);
 	node->SetPrevious(temp);
 	node->SetNext(0);
+}
+
+void LinkListManager::privAddToMiddle(LinkedListNode * node, int data)
+{
+	assert(node != 0); //safety
+
+	//if we are the only node on the list
+	if (head == 0)
+	{
+		head = node;
+		head->SetNext(0);
+		head->SetPrevious(0);
+		return;
+	}
+	else
+	{
+		LinkedListNode* temp = head;
+		
+		while (temp != 0)
+		{
+			if (temp->getData() == data) //not really sure what to do here
+			{
+				break;
+			}
+
+			temp = temp->getNext();
+		}
+
+		//fix pointers
+		node->SetNext(temp->getNext());
+		node->SetPrevious(temp->getPrevious());
+		temp->SetNext(node);
+	}
 }

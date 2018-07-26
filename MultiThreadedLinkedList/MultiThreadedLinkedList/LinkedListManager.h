@@ -17,7 +17,7 @@ public:
 	static void RemoveMiddle(LinkedListNode *node, int data);
 	static void RemoveBack(LinkedListNode *node);
 
-	static int Find(const int inData);
+	static LinkedListNode * Find(const int inData);
 
 	static void PrintList();
 
