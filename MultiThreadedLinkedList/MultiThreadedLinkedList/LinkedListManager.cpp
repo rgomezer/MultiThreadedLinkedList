@@ -93,6 +93,15 @@ void LinkListManager::AddToBack(LinkedListNode * node)
 	linkMan->privAddToBack(node);
 }
 
+void LinkListManager::RemoveFront(LinkedListNode * node)
+{
+	assert(node != 0);
+
+	LinkListManager *linkMan = privGetInstance();
+
+	linkMan->privRemoveFront(node);
+}
+
 LinkListManager * LinkListManager::privGetInstance()
 {
 	static LinkListManager linkMan;
@@ -182,5 +191,30 @@ void LinkListManager::privAddToMiddle(LinkedListNode * node, int data)
 		node->SetNext(temp->getNext());
 		node->SetPrevious(temp->getPrevious());
 		temp->SetNext(node);
+	}
+}
+
+void LinkListManager::privRemoveFront(LinkedListNode * node)
+{
+	assert(node != 0); //safety
+
+	//if we are the only node
+	if (node->getNext() == 0 && node->getPrevious() == 0)
+	{
+		head = 0;
+		return;
+	}
+
+	//we are definitely in the front
+	if (node->getPrevious() == 0 && node->getPrevious() != 0)
+	{
+		node->getNext()->SetPrevious(0);
+		head = node->getNext();
+		return;
+	}
+	else
+	{
+		printf("Node is not in the front of the list\n");
+		return;
 	}
 }
