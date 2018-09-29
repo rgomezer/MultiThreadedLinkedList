@@ -14,6 +14,7 @@ public:
 	static void AddToBack(LinkedListNode *node);
 
 	static void RemoveFront(LinkedListNode *node);
+	static void RemoveFront();
 	static void RemoveMiddle(LinkedListNode *node, int data);
 	static void RemoveBack(LinkedListNode *node);
 
@@ -34,6 +35,7 @@ private:
 	void privAddToMiddle(LinkedListNode *node, int data);
 
 	void privRemoveFront(LinkedListNode *node);
+	void privRemoveFront();
 	void privRemoveMiddle(LinkedListNode *node);
 	void privRemoveBack(LinkedListNode *node);
 

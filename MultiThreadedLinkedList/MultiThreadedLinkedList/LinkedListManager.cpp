@@ -102,6 +102,13 @@ void LinkListManager::RemoveFront(LinkedListNode * node)
 	linkMan->privRemoveFront(node);
 }
 
+void LinkListManager::RemoveFront()
+{
+	LinkListManager *linkMan = privGetInstance();
+
+	linkMan->privRemoveFront();
+}
+
 LinkListManager * LinkListManager::privGetInstance()
 {
 	static LinkListManager linkMan;
@@ -217,4 +224,16 @@ void LinkListManager::privRemoveFront(LinkedListNode * node)
 		printf("Node is not in the front of the list\n");
 		return;
 	}
+}
+
+void LinkListManager::privRemoveFront()
+{
+	//if we are the only node
+	if (head->getNext() == 0 && head->getPrevious() == 0)
+	{
+		head = 0;
+		return;
+	}
+
+
 }
